@@ -3,7 +3,7 @@
 # download
 DASHBOARD_PATH="./dashboard"
 METRICS="v1.0.7"
-DASHBOARD="v2.4.0"
+DASHBOARD="v2.5.1"
 MERTRICS_SERVER="v0.6.1"
 
 docker pull kubernetesui/metrics-scraper:$METRICS
