@@ -24,7 +24,8 @@ K8S_PATH="./k8s"
 ARCH="amd64"
 CNI_VERSION="v0.8.2"
 CRICTL_VERSION="v1.22.0"
-RELEASE="$(curl -sSL https://dl.k8s.io/release/stable.txt)"
+# RELEASE="$(curl -sSL https://dl.k8s.io/release/stable.txt)"
+RELEASE="v1.23.6"
 RELEASE_VERSION="v0.4.0"
 
 curl -L "https://github.com/containernetworking/plugins/releases/download/${CNI_VERSION}/cni-plugins-linux-${ARCH}-${CNI_VERSION}.tgz" -o cni-plugins-linux-${ARCH}-${CNI_VERSION}.tgz
