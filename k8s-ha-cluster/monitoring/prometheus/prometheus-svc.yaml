@@ -1,5 +1,3 @@
-## Backend : prometheus-server
-## To expose prometheus pods
 apiVersion: v1
 kind: Service
 metadata:

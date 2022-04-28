@@ -13,6 +13,8 @@ spec:
       labels:
         app: prometheus-server
     spec:
+      securityContext:
+        runAsUser: 0
       containers:
         - name: prometheus
           image: prom/prometheus:v2.34.0
@@ -33,4 +35,5 @@ spec:
             defaultMode: 420
             name: prometheus-server-conf
         - name: prometheus-storage-volume
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: prometheus-pvc
