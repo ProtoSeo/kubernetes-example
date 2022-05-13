@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+  namespace: db-test
+  labels:
+    app: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: ktor-practice:v0.0.1
+        imagePullPolicy: Never
+        env:
+          - name: DB_URL
+            value: "jdbc:mysql://mysql.db-test.svc.cluster.local:3306/ktor"
+          - name: DB_USER
+            value: "user"
+          - name: DB_PASSWORD
+            value: "mypass"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
