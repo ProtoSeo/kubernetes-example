@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv1
+  labels:
+    storage: mysql-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/nfs_share/mysql1
+    server: 192.168.1.50
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv2
+  labels:
+    storage: mysql-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/nfs_share/mysql2
+    server: 192.168.1.50
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv3
+  labels:
+    storage: mysql-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /mnt/nfs_share/mysql3
+    server: 192.168.1.50
