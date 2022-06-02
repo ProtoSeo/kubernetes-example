@@ -59,10 +59,7 @@ sudo systemctl restart containerd
 
 ## 사전에 필요한 이미지 파일 압축 해제
 FILES="./image/*.tar"
-for f in $FILES
-do
-    ctr -n=k8s.io images import $f
-done
+for f in $FILES;do ctr -n=k8s.io images import $f;done
 
 ## 쿠버네티스 설치 
 CNI_VERSION="v0.8.2"
