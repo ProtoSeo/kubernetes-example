@@ -24,8 +24,7 @@ K8S_PATH="./k8s"
 ARCH="amd64"
 CNI_VERSION="v0.8.2"
 CRICTL_VERSION="v1.22.0"
-# RELEASE="$(curl -sSL https://dl.k8s.io/release/stable.txt)"
-RELEASE="v1.23.6"
+RELEASE="v1.23.6" # "$(curl -sSL https://dl.k8s.io/release/stable.txt)"
 RELEASE_VERSION="v0.4.0"
 
 curl -L "https://github.com/containernetworking/plugins/releases/download/${CNI_VERSION}/cni-plugins-linux-${ARCH}-${CNI_VERSION}.tgz" -o cni-plugins-linux-${ARCH}-${CNI_VERSION}.tgz
@@ -52,9 +51,7 @@ PROXY="v1.23.6"
 PAUSE="3.6"
 ETCD="3.5.1-0"
 COREDNS="v1.8.6"
-# FLANNEL="v0.17.0"
-# FLANNEL_CNI="v1.0.1"
-CALICO="v3.22.2"
+CALICO="v3.22.2" # 아래의 calico.yaml image version을 따라야 한다.
 
 docker pull k8s.gcr.io/kube-apiserver:$API_SERVER
 docker pull k8s.gcr.io/kube-controller-manager:$CONTROLLER
@@ -67,8 +64,6 @@ docker pull docker.io/calico/cni:$CALICO
 docker pull docker.io/calico/pod2daemon-flexvol:$CALICO
 docker pull docker.io/calico/node:$CALICO
 docker pull docker.io/calico/kube-controllers:$CALICO
-# docker pull rancher/mirrored-flannelcni-flannel:$FLANNEL
-# docker pull rancher/mirrored-flannelcni-flannel-cni-plugin:$FLANNEL_CNI
 
 docker save k8s.gcr.io/kube-apiserver:$API_SERVER > kube-apiserver.tar
 docker save k8s.gcr.io/kube-controller-manager:$CONTROLLER > kube-controller-manager.tar
@@ -81,8 +76,6 @@ docker save docker.io/calico/cni:$CALICO > calico-cni.tar
 docker save docker.io/calico/pod2daemon-flexvol:$CALICO > calico-pod2daemon-flexvol.tar 
 docker save docker.io/calico/node:$CALICO > calico-node.tar
 docker save docker.io/calico/kube-controllers:$CALICO > calico-kube-controllers.tar
-# docker save rancher/mirrored-flannelcni-flannel:$FLANNEL > mirrored-flannelcni-flannel.tar
-# docker save rancher/mirrored-flannelcni-flannel-cni-plugin:$FLANNEL_CNI > mirrored-flannelcni-flannel-cni-plugin.tar
 mkdir $IMAGE_PATH
 mv ./*.tar $IMAGE_PATH
 
