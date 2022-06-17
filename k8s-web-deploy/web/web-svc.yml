@@ -2,7 +2,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web
-  namespace: db-test
 spec:
   ports:
   - name: myweb-svc

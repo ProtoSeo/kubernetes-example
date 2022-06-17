@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-deployment
-  namespace: db-test
   labels:
     app: web
 spec:
@@ -17,11 +16,11 @@ spec:
     spec:
       containers:
       - name: web
-        image: ktor-practice:v0.0.1
+        image: protoseo/ktor-practice:v0.0.1
         imagePullPolicy: Never
         env:
           - name: DB_URL
-            value: "jdbc:mysql://mysql.db-test.svc.cluster.local:3306/ktor"
+            value: "jdbc:mysql://mysql.default.svc.cluster.local:3306/ktor"
           - name: DB_USER
             value: "user"
           - name: DB_PASSWORD
@@ -31,7 +30,7 @@ spec:
             memory: "128Mi"
             cpu: "250m"
           limits:
-            memory: "512Mi"
+            memory: "1Gi"
             cpu: "500m"
         ports:
         - containerPort: 8080
