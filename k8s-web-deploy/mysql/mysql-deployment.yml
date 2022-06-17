@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
-  namespace: db-test
   labels:
     app: web
 spec:
@@ -15,8 +14,6 @@ spec:
       labels:
         app: web
     spec:
-      securityContext:
-        runAsUser: 0
       containers:
       - image: mysql:5.7
         imagePullPolicy: Never
