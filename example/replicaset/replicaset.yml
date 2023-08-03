@@ -5,17 +5,17 @@ metadata:
 spec:
   replicas: 4
   selector:
-  matchLabels:
-    app: nginx
-    tier: app
+    matchLabels:
+      app: nginx
+      tier: app
   template:
     metadata:
       name: nginx
       labels:
         app: nginx
         tier: app
-      spec:
-        containers:
+    spec:
+      containers:
         - name: nginx
           image: nginx:1.14.2
           ports:
